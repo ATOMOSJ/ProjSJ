@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">listview</string>
+    <string name="S1">select an state</string>
+    <string name="S2">click here</string>
+</resources>

@@ -1,0 +1,497 @@
+createSQL*Plus: Release 11.2.0.2.0 Production on Fri Jan 20 18:49:58 2023
+SQL*Plus: Release 11.2.0.2.0 Production on Wed Feb 1 16:27:19 2023
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> conn jps/kiit
+Connected.
+SQL> desc emp
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(2)
+ NAME                                               VARCHAR2(9)
+ AGE                                                NUMBER(2)
+ SAL                                                NUMBER(7)
+ EMAIL                                              VARCHAR2(14)
+ LOC                                                VARCHAR2(4)
+ PHONE                                              NUMBER(7)
+ GENDER                                             VARCHAR2(1)
+
+SQL> select * from emp;
+
+no rows selected
+
+SQL> create table emp1;
+create table emp1
+                *
+ERROR at line 1:
+ORA-00906: missing left parenthesis
+
+
+SQL> create table emp1 (ID int, NAME varchar(8),AGE int, SAL int, LOC varchar(4), DOJ varchar(9), S int);
+
+Table created.
+
+SQL> insert into emp1 values(14,'raj',27,4000,ind,'23-JAN-97','m');
+insert into emp1 values(14,'raj',27,4000,ind,'23-JAN-97','m')
+                                         *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into emp1 (ID,NAME,AGE,SAL,LOC,DOJ,S) values(14,'raj',27,4000,ind,'23-JAN-97','m');
+insert into emp1 (ID,NAME,AGE,SAL,LOC,DOJ,S) values(14,'raj',27,4000,ind,'23-JAN-97','m')
+                                                                     *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into emp1 values(14,'raj',27,4000,'ind','23-JAN-97','m');
+insert into emp1 values(14,'raj',27,4000,'ind','23-JAN-97','m')
+                                                           *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> create table emp2 (ID int, NAME varchar(8),AGE int, SAL int, LOC varchar(4), DOJ varchar(9), S va
+rchar(1));
+
+Table created.
+
+SQL> insert into emp2 values(14,'raj',27,4000,'ind','23-JAN-97','m');
+
+1 row created.
+
+SQL> insert into emp2 values(19,'mark',37,9000,'aus','18-JAN-99','m');
+
+1 row created.
+
+SQL> create table emp3 (ID int, NAME varchar(8),AGE int, SAL int, LOC varchar(4), DOJ varchar(9), S varchar(1));
+
+Table created.
+
+SQL> insert into emp3 values(14,'raj',27,4000,'ind','23-JAN-97','m');
+
+1 row created.
+
+SQL> insert into emp3 values(19,'mark',37,9000,'aus','18-MAR-99','m');
+
+1 row created.
+
+SQL> insert into emp3 values(16,'nick',29,7600,'eng','18-JUN-03','u');
+
+1 row created.
+
+SQL> insert into emp3 values(11,'sameer',39,5500,'ind','11-NOV-86','m');
+
+1 row created.
+
+SQL> insert into emp3 values(23,'william',25,9700,'nz','19-JAN-88','u');
+
+1 row created.
+
+SQL> insert into emp3 values(23,'ahmed',30,1500,'pak',NULL,'m');
+
+1 row created.
+
+SQL> insert into emp3 values(23,'steve',36,7700,'aus','05-MAY-02','m');
+
+1 row created.
+
+SQL> insert into emp3 values(26,'kartik',25,4800,'ind',NULL,NULL);
+
+1 row created.
+
+SQL> insert into emp3 values(18,'collin',22,2000,'eng','16-NOV-95','m');
+
+1 row created.
+
+SQL> insert into emp3 values(27,'priti',31,2600,'ind','13-APR-97','u');
+
+1 row created.
+
+SQL> insert into emp3 values(18,'lance',42,8900,'sa','05-DEC-95','m');
+
+1 row created.
+
+SQL> select * from emp3;
+
+        ID NAME            AGE        SAL LOC  DOJ       S
+---------- -------- ---------- ---------- ---- --------- -
+        14 raj              27       4000 ind  23-JAN-97 m
+        19 mark             37       9000 aus  18-MAR-99 m
+        16 nick             29       7600 eng  18-JUN-03 u
+        11 sameer           39       5500 ind  11-NOV-86 m
+        23 william          25       9700 nz   19-JAN-88 u
+        23 ahmed            30       1500 pak            m
+        23 steve            36       7700 aus  05-MAY-02 m
+        26 kartik           25       4800 ind
+        18 collin           22       2000 eng  16-NOV-95 m
+        27 priti            31       2600 ind  13-APR-97 u
+        18 lance            42       8900 sa   05-DEC-95 m
+
+11 rows selected.
+
+SQL> desc emp3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(38)
+ NAME                                               VARCHAR2(8)
+ AGE                                                NUMBER(38)
+ SAL                                                NUMBER(38)
+ LOC                                                VARCHAR2(4)
+ DOJ                                                VARCHAR2(9)
+ S                                                  VARCHAR2(1)
+
+SQL> select age,name from emp3 where age >30 and age <40;
+
+       AGE NAME
+---------- --------
+        37 mark
+        39 sameer
+        36 steve
+        31 priti
+
+SQL> select NAME,LOC from emp3 where DOJ='%NOV%';
+
+no rows selected
+
+SQL> select NAME,LOC from emp3 where DOJ="%NOV%";
+select NAME,LOC from emp3 where DOJ="%NOV%"
+                                    *
+ERROR at line 1:
+ORA-00904: "%NOV%": invalid identifier
+
+
+SQL> select NAME,LOC from emp3 where DOJ like %NOV%;
+select NAME,LOC from emp3 where DOJ like %NOV%
+                                         *
+ERROR at line 1:
+ORA-00911: invalid character
+
+
+SQL> select NAME,LOC from emp3 where DOJ like '%NOV%';
+
+NAME     LOC
+-------- ----
+sameer   ind
+collin   eng
+
+SQL> update emp3 set SAL=SAL-500 where age<32;
+
+7 rows updated.
+
+SQL> select * CONCAT(LOC,NAME) as age_adr from emp3;
+select * CONCAT(LOC,NAME) as age_adr from emp3
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select * LOC||' '||NAME as "age_adr" from emp3;
+select * LOC||' '||NAME as "age_adr" from emp3
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select LOC||' '||NAME as "age_adr" from emp3;
+
+age_adr
+-------------
+ind raj
+aus mark
+eng nick
+ind sameer
+nz william
+pak ahmed
+aus steve
+ind kartik
+eng collin
+ind priti
+sa lance
+
+11 rows selected.
+
+SQL> select CONCAT(LOC,NAME) as age_adr from emp3;
+
+AGE_ADR
+------------
+indraj
+ausmark
+engnick
+indsameer
+nzwilliam
+pakahmed
+aussteve
+indkartik
+engcollin
+indpriti
+salance
+
+11 rows selected.
+
+SQL> select CONCAT(AGE,,LOC,,NAME) as age_adr from emp3;
+select CONCAT(AGE,,LOC,,NAME) as age_adr from emp3
+                  *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select CONCAT(AGE,',LOC,',NAME) as age_adr from emp3;
+select CONCAT(AGE,',LOC,',NAME) as age_adr from emp3
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments
+
+
+SQL> select NAME,LOC from emp3 where DOJ > like '%1996%' and DOJ < like '%2001%';
+select NAME,LOC from emp3 where DOJ > like '%1996%' and DOJ < like '%2001%'
+                                      *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select NAME from emp3 where S like 'u';
+
+NAME
+--------
+nick
+william
+priti
+
+SQL> select id from emp3 where S like 'm' and LOC like 'ind';
+
+        ID
+----------
+        14
+        11
+
+SQL> select AGE ,DOJ from emp3 where SAL > 7900;
+
+       AGE DOJ
+---------- ---------
+        37 18-MAR-99
+        25 19-JAN-88
+        42 05-DEC-95
+
+SQL> select NAME,AGE ,DOJ from emp3 where SAL != 5500 and 8900;
+select NAME,AGE ,DOJ from emp3 where SAL != 5500 and 8900
+                                                        *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select NAME,AGE ,DOJ from emp3 where SAL != 5500 and SAL!=8900;
+
+NAME            AGE DOJ
+-------- ---------- ---------
+raj              27 23-JAN-97
+mark             37 18-MAR-99
+nick             29 18-JUN-03
+william          25 19-JAN-88
+ahmed            30
+steve            36 05-MAY-02
+kartik           25
+collin           22 16-NOV-95
+priti            31 13-APR-97
+
+9 rows selected.
+
+SQL> select id from emp3 where LOC like 'ind or sal>6000';
+
+no rows selected
+
+SQL> select id from emp3 where LOC like 'ind' or sal>6000';
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> select id from emp3 where LOC = 'ind' or sal>6000';
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> select id from emp3 where LOC = 'ind' or sal>6000;
+
+        ID
+----------
+        14
+        19
+        16
+        11
+        23
+        23
+        26
+        27
+        18
+
+9 rows selected.
+
+SQL> select NAME,LOC from emp3 where DOJ=NULL;
+
+no rows selected
+
+SQL> select NAME,LOC from emp3 where DOJ='NULL';
+
+no rows selected
+
+SQL> select NAME,LOC from emp3 where DOJ='';
+
+no rows selected
+
+SQL> select NAME,LOC from emp3 where DOJ=0;
+select NAME,LOC from emp3 where DOJ=0
+                                *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> select NAME,LOC from emp3 where DOJ IS NULL;
+
+NAME     LOC
+-------- ----
+ahmed    pak
+kartik   ind
+
+SQL> select AGE from emp3 where DOJ='NULL' AND S IS NULL;
+
+no rows selected
+
+SQL> select AGE from emp3 where DOJ IS NULL AND S IS NULL;
+
+       AGE
+----------
+        25
+
+SQL> select AGE,NAME from emp3 where NAME LIKE 'm%' and SAL > 6000;
+
+       AGE NAME
+---------- --------
+        37 mark
+
+SQL> select AGE,NAME from emp3 where NAME LIKE '%m%' and SAL > 6000;
+
+       AGE NAME
+---------- --------
+        37 mark
+        25 william
+
+SQL> select AGE,NAME from emp3 where NAME NOT LIKE '%a%' ;
+
+       AGE NAME
+---------- --------
+        29 nick
+        36 steve
+        22 collin
+        31 priti
+
+SQL> alter table emp3 alter column LOC varchar(15);
+alter table emp3 alter column LOC varchar(15)
+                 *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> alter table emp3 modify (LOC varchar(15));
+
+Table altered.
+
+SQL> alter table emp3 add (email varchar(15));
+
+Table altered.
+
+SQL> desc emp3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(38)
+ NAME                                               VARCHAR2(8)
+ AGE                                                NUMBER(38)
+ SAL                                                NUMBER(38)
+ LOC                                                VARCHAR2(15)
+ DOJ                                                VARCHAR2(9)
+ S                                                  VARCHAR2(1)
+ EMAIL                                              VARCHAR2(15)
+
+SQL> select ID from emp3 where and SAL < 5200;
+select ID from emp3 where and SAL < 5200
+                          *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select ID from emp3 where SAL < 5200;
+
+        ID
+----------
+        14
+        23
+        26
+        18
+        27
+
+SQL> select * table emp3;
+select * table emp3
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select * from emp3;
+
+        ID NAME            AGE        SAL LOC             DOJ       S
+---------- -------- ---------- ---------- --------------- --------- -
+EMAIL
+---------------
+        14 raj              27       3500 ind             23-JAN-97 m
+
+
+        19 mark             37       9000 aus             18-MAR-99 m
+
+
+        16 nick             29       7100 eng             18-JUN-03 u
+
+
+
+        ID NAME            AGE        SAL LOC             DOJ       S
+---------- -------- ---------- ---------- --------------- --------- -
+EMAIL
+---------------
+        11 sameer           39       5500 ind             11-NOV-86 m
+
+
+        23 william          25       9200 nz              19-JAN-88 u
+
+
+        23 ahmed            30       1000 pak                       m
+
+
+
+        ID NAME            AGE        SAL LOC             DOJ       S
+---------- -------- ---------- ---------- --------------- --------- -
+EMAIL
+---------------
+        23 steve            36       7700 aus             05-MAY-02 m
+
+
+        26 kartik           25       4300 ind
+
+
+        18 collin           22       1500 eng             16-NOV-95 m
+
+
+
+        ID NAME            AGE        SAL LOC             DOJ       S
+---------- -------- ---------- ---------- --------------- --------- -
+EMAIL
+---------------
+        27 priti            31       2100 ind             13-APR-97 u
+
+
+        18 lance            42       8900 sa              05-DEC-95 m
+
+
+
+11 rows selected.
+
+SQL>455,'M'),(09,'Ritu',43,65000,'rt@gmail.com','IND',213567,'F'),(04,'Andrew',22,25000,'ad@gmail.com','ENG',778943,'M'),(16,'Sagnik',29,18000,'sg@gmail.com','IND',324567,'M'),(02,'Robert',37,36000,'rb@gmail.com','USA',123897,'M'),(14,'patric',45,55000,'pt@gmail.com','ENG',371189,'M'),(07, 'Sersn',53,72000,'dk@gmail.com','ENG',NULL,'F'),(14,'jimmy',32,39000,'jm@gmail.com','AUS',450091,'M'),(11,'Mathews',40,27000,'mt@gmail.com','NZ',349002,'M')

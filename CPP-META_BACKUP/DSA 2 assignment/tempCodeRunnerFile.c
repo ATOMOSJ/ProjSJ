@@ -1,0 +1,1 @@
+rintf("\tname is %s\n",record.name);

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="#E91E63"
+    android:backgroundTint="#E91E63"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <!-- <ImageView
+        android:layout_width="91dp"
+        android:layout_height="97dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/indian_rupee_coin_black_outline_18597"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="@android:dimen/notification_large_icon_width"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:textAllCaps="true"/>
+
+    <EditText
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:inputType="numberPassword"
+        android:layout_marginLeft="80dp"
+        android:hint="enter passsword"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00BCD4"
+        android:text="PAY"
+        android:layout_marginLeft="167dp"/>-->
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="ICON"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/indian_rupee_coin_black_outline_18597" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send money to friends and family instantly"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="ENTER YOUR PASSWORD"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#3E2020"
+        android:text="PAY" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

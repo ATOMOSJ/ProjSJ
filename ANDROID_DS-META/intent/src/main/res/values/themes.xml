@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="marvin" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <item name="actionBarTheme">@style/marvin</item>
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+    <style name="myac" parent="Widget.MaterialComponents.ActionBar.PrimarySurface">
+        <item name="android:background">#000000</item>
+    </style>
+
+</resources>

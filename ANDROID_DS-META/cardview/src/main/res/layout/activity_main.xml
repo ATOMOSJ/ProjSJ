@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/c1"
+        android:layout_width="340dp"
+        app:cardBackgroundColor="#2EE106"
+        android:layout_height="500dp"
+        app:cardElevation="14dp"
+        app:cardCornerRadius="12dp"
+        android:layout_gravity="center"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="137dp"
+                android:text="hello"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c2"
+                android:layout_width="340dp"
+                android:layout_height="500dp"
+                app:cardBackgroundColor="#06CFE1"
+                app:cardElevation="14dp"
+                app:cardCornerRadius="12dp"
+                app:cardUseCompatPadding="true"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c3"
+                android:layout_width="340dp"
+                app:cardBackgroundColor="#A706E1"
+                android:layout_height="500dp"
+                app:cardElevation="14dp"
+                app:cardCornerRadius="12dp"
+                app:cardUseCompatPadding="true"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c4"
+                android:layout_width="340dp"
+                app:cardBackgroundColor="#E10691"
+                android:layout_height="500dp"
+                app:cardElevation="14dp"
+                app:cardCornerRadius="12dp"
+                app:cardUseCompatPadding="true"/> <androidx.cardview.widget.CardView
+            android:id="@+id/c5"
+            android:layout_width="340dp"
+            app:cardBackgroundColor="#FFE500"
+            android:layout_height="500dp"
+            app:cardElevation="14dp"
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"/> <androidx.cardview.widget.CardView
+            android:id="@+id/c6"
+            android:layout_width="340dp"
+            app:cardBackgroundColor="#E12006"
+            android:layout_height="500dp"
+            app:cardElevation="14dp"
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"/> <androidx.cardview.widget.CardView
+            android:id="@+id/c7"
+            android:layout_width="340dp"
+            app:cardBackgroundColor="#1C06E1"
+            android:layout_height="500dp"
+            app:cardElevation="14dp"
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

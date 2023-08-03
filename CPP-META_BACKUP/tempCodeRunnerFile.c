@@ -1,0 +1,16 @@
+printf("TRAVERSAL\n");
+    trev(head);
+    printf("CHECK\n");
+    check(head);
+    printf("INSERT\n");
+    head=oindex(head,5,3);
+    trev(head);
+    printf("\n");
+    printf("DELETION\n");
+    head=dex(head,3);
+    trev(head);
+    printf("\n");
+    printf("COUNTING NODES\n");
+    count(head);
+    printf("\n");
+    search(head,66);

@@ -1,0 +1,6 @@
+String name = "John Doe";
+        int age = 30;
+        String address = "123 Main St, Anytown USA";
+        String phone = "123-456-7890";
+        String email = "johndoe@example.com";
+        String bio = "I am a software engineer with experience in Java programming.";

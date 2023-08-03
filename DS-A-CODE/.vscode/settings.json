@@ -1,0 +1,14 @@
+{
+    "C_Cpp.errorSquiggles": "Enabled",
+    "files.associations": {
+        "new": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "array": "c",
+        "bitset": "c",
+        "initializer_list": "c",
+        "regex": "c",
+        "utility": "c",
+        "iosfwd": "cpp"
+    }
+}

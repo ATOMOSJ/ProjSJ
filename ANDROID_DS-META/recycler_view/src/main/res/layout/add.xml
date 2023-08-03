@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/w1"
+        android:text="contact"
+        android:textSize="34dp"/>
+
+    <EditText
+        android:id="@+id/e2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/w1"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="45dp"
+        android:background="#ffffff"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:hint="enter name" />
+
+    <EditText
+        android:id="@+id/e3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/e2"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="0.1dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="45dp"
+        android:background="#ffffff"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:hint="enter number" />
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/e4"
+        android:text="Save"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/e3"
+        android:layout_marginBottom="108dp"
+      android:layout_centerInParent="true" />
+
+
+</RelativeLayout>

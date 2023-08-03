@@ -1,0 +1,31 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "PAYNOW"
+include ':app'
+include ':drko'
+include ':bmi'
+include ':bmi'
+include ':myapplication'
+include ':bodymassindex'
+include ':tictoe'
+include ':intent'
+include ':inpass'
+include ':splash_screen'
+include ':animation'
+include ':lottie'
+include ':listview'
+include ':themes'
+include ':cardview'
+include ':recycler_view'

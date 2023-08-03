@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/dick"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+ <EditText
+     android:layout_width="wrap_content"
+     android:layout_height="50dp"
+     android:ems="10"
+     android:autofillHints="username"
+     android:hint="@string/ht_we"
+     android:id="@+id/iDFORWEIGHT"
+     android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:autofillHints="username"
+        android:hint="@string/ht_htf"
+        android:inputType="number"
+        android:id="@+id/iDFORHEIGHT1"/>
+        <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="@string/ht_hti"
+        android:inputType="number"
+        android:id="@+id/iDFORHEIGHT2"/>
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text="CALCULATE"
+        android:id="@+id/iDFORCALCULATION"
+        android:backgroundTint="#000000">
+      </Button>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Result"
+        android:textSize="33dp"
+        android:id="@+id/iDFORRESULT"
+        android:textStyle="bold"
+        android:layout_marginTop="70dp">
+
+    </TextView>
+
+
+</LinearLayout>
