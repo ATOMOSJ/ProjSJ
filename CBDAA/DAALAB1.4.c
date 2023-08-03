@@ -40,7 +40,8 @@ int main() {
     for (int i = 0; i < N; i++) {
         printf(" %d", A[i]);
     }
+    
     printf("\n");
-
+printf("Size of unsigned int: %zu bytes\n", sizeof(unsigned int));
     return 0;
 }

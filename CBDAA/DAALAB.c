@@ -31,7 +31,8 @@ int main() {
             }
         }
     }
-
+ printf("Size of unsigned int: %zu bytes\n", sizeof(unsigned int));
+    
     printf("\nTotal number of duplicate values = %d\n", total_duplicates);
     printf("The most repeating element in the array = %d\n", most_repeating_element);
 
