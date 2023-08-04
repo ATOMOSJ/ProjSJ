@@ -1,21 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-// Structure to store incoming data
 struct Packet {
-    char sourceCode[1000];
+    int codeNumber;
     char ipAddress[20];
     char protocolName[50];
 };
 
+// Function to display the packet data
+void destination(const struct Packet *packet) {
+    printf("\nPacket:\n");
+    printf("Code Number: %d\n", packet->codeNumber);
+    printf("IP Address: %s\n", packet->ipAddress);
+    printf("Protocol Name: %s\n", packet->protocolName);
+}
+
 int main() {
-    // Create a packet structure
     struct Packet packet;
 
-    // Receive input from the source machine
-    printf("Enter source code: ");
-    fgets(packet.sourceCode, sizeof(packet.sourceCode), stdin);
-    packet.sourceCode[strcspn(packet.sourceCode, "\n")] = '\0'; // Remove newline from input
+    // Use pointers to scan data
+    int *codeNumberPtr = &packet.codeNumber;
+
+    printf("Enter code number: ");
+    scanf("%d", codeNumberPtr);
+    getchar(); // Clear the input buffer
 
     printf("Enter IP address: ");
     fgets(packet.ipAddress, sizeof(packet.ipAddress), stdin);
@@ -25,11 +34,8 @@ int main() {
     fgets(packet.protocolName, sizeof(packet.protocolName), stdin);
     packet.protocolName[strcspn(packet.protocolName, "\n")] = '\0'; // Remove newline from input
 
-    // Display the received packet
-    printf("\nPacket:\n");
-    printf("Source Code: %s\n", packet.sourceCode);
-    printf("IP Address: %s\n", packet.ipAddress);
-    printf("Protocol Name: %s\n", packet.protocolName);
+    // Display the packet data using the destination function
+    destination(&packet);
 
     return 0;
 }
