@@ -26,7 +26,6 @@ int main(int argc, char *argv[]) {
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(PORT);
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");  // Loopback address
-
     char message[100];
 
     while (1) {
@@ -34,9 +33,9 @@ int main(int argc, char *argv[]) {
         gets(message);
 
         // Send data to receiver
-        sendto(senderSocket, message, strlen(message), 0, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
+        sendto(senderSocket, *message, strlen(message), 0, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
 
-        if (strcmp(message, "exit") == 0) {
+        if (strcmp(message, "exit") == 0 && strcmp(message, "EXIT") == 0 ) {
             break;
         }
     }
