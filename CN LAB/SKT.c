@@ -33,9 +33,9 @@ int main(int argc, char *argv[]) {
         gets(message);
 
         // Send data to receiver
-        sendto(senderSocket, *message, strlen(message), 0, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
+        sendto(senderSocket, message, strlen(message), 0, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
 
-        if (strcmp(message, "exit") == 0 && strcmp(message, "EXIT") == 0 ) {
+        if (strcmp(message, "exit") == 0 || strcmp(message, "EXIT") == 0) {
             break;
         }
     }
