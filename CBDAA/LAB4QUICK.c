@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+int com =0;
 void quick_sort(int arr[], int left, int right);
 int partition(int arr[], int left, int right);
 
@@ -78,16 +78,19 @@ int main() {
     
     
     printf("Execution Time: %.6f seconds\n", execution_time);
-    
+    printf("%d is the no of comparision",com);
     
     return 0;
 }
 
 void quick_sort(int arr[], int left, int right) {
     if (left < right) {
+        
         int pivot_index = partition(arr, left, right);
         quick_sort(arr, left, pivot_index - 1);
         quick_sort(arr, pivot_index + 1, right);
+        com++;
+        // printf("%d\n",c);
     }
 }
 
