@@ -3,13 +3,19 @@
 #include <string.h>
 #include <winsock2.h>
 
-#define PORT 12345
-
 int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        printf("Usage: %s <IP address> <port>\n", argv[0]);
+        return 1;
+    }
+
+    const char *ipAddress = argv[1];
+    int port = atoi(argv[2]);
+
     // Initialize Winsock
     WSADATA wsa;
     if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0) {
-        perror("WSAStartup failed");
+        printf("Winsock initialization failed\n");
         return 1;
     }
 
@@ -17,26 +23,36 @@ int main(int argc, char *argv[]) {
     SOCKET senderSocket;
     senderSocket = socket(AF_INET, SOCK_DGRAM, 0);
     if (senderSocket == INVALID_SOCKET) {
-        perror("Socket creation failed");
+        printf("Socket creation failed\n");
+        WSACleanup();
         return 1;
     }
 
-    // Configure server address
-    struct sockaddr_in serverAddr;
-    serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(PORT);
-    serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");  // Loopback address
+    // Configure receiver address
+    struct sockaddr_in receiverAddr;
+    receiverAddr.sin_family = AF_INET;
+    receiverAddr.sin_port = htons(port);
+    receiverAddr.sin_addr.s_addr = inet_addr(ipAddress);
+
     char message[100];
+    int bytesSent;
 
     while (1) {
-        printf("Enter message: ");
-        gets(message);
+        printf("Enter a message: ");
+        fgets(message, sizeof(message), stdin);
+        message[strlen(message) - 1] = '\0';  // Remove the newline character
 
-        // Send data to receiver
-        sendto(senderSocket, message, strlen(message), 0, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
-
-        if (strcmp(message, "exit") == 0 || strcmp(message, "EXIT") == 0) {
+        if (strcmp(message, "exit") == 0) {
             break;
+        }
+
+        // Send message to receiver
+        bytesSent = sendto(senderSocket, message, strlen(message), 0, (struct sockaddr *)&receiverAddr, sizeof(receiverAddr));
+        if (bytesSent == SOCKET_ERROR) {
+            printf("Message sending failed\n");
+            closesocket(senderSocket);
+            WSACleanup();
+            return 1;
         }
     }
 
