@@ -35,21 +35,10 @@ void round_matrix(int n, int A[][n]) {
     }
   }
 }
-
-// Time complexity analysis
-// The time complexity of this algorithm is O(n^2), where n is the size of the matrix.
-// This is because we need to iterate over all rows and columns of the matrix twice.
-// The first iteration is to calculate the row and column sums, and the second iteration is to round the elements of the matrix.
-
 int main() {
-  // Create a 3x3 matrix
-  int n = 3;
+  
   int A[3][3] = { {1.5, 2.5, 3.5}, {4.5, 5.5, 6.5}, {7.5, 8.5, 9.5} };
-
-  // Round the elements of the matrix
   round_matrix(n, A);
-
-  // Print the rounded matrix
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       printf("%d ", A[i][j]);

@@ -29,7 +29,6 @@ void merge_sort(int arr[], int size) {
     if (size <= 1) {
         return;
     }
-    
     int mid = size / 2;
     int *left = (int *)malloc(mid * sizeof(int));
     int *right = (int *)malloc((size - mid) * sizeof(int));

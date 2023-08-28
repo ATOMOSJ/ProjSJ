@@ -24,7 +24,7 @@ int main() {
     int *random_numbers = (int *)malloc(num_elements * sizeof(int));
     
     for (int i = 0; i < num_elements; i++) {
-        random_numbers[i] = rand() % 5600; // Generate a random number between 0 and 99
+        random_numbers[i] = rand() % 20000; // Generate a random number between 0 and 99
     }
     
     qsort(random_numbers, num_elements, sizeof(int), compare);
