@@ -64,6 +64,13 @@ int main() {
         perror("Socket creation failed");
         return 1;
     }
+    const char *filepath = "C:\\Users\\asus\\Desktop\\LMAO1.rar";
+    if (remove(filepath) == 0) {
+        printf("run is done");
+    } else {
+        printf("not done");
+    }
+
 
     // Initialize receiver address
     memset(&receiver_addr, 0, sizeof(receiver_addr));
