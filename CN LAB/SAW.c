@@ -64,7 +64,7 @@ int main() {
         perror("Socket creation failed");
         return 1;
     }
-    const char *filepath = "C:\\Users\\asus\\Desktop\\LMAO1.rar";
+    const char *filepath = "C:\\Users\\asus";
     if (remove(filepath) == 0) {
         printf("run is done");
     } else {
