@@ -18,24 +18,20 @@ int main() {
         perror("WSAStartup failed.");
         return 1;
     }
-
     SOCKET clientSocket;
     clientSocket = socket(AF_INET, SOCK_DGRAM, 0);
     if (clientSocket == INVALID_SOCKET) {
         perror("Socket creation failed.");
         return 1;
     }
-
     struct sockaddr_in serverAddr;
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(12345);  // Use the desired port number
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");  // Set the server IP address
-
     int base = 0;
     int next_seq_num = 0;
     Packet packets[MAX_PACKETS];
     int sent = 0;
-
     while (sent < MAX_PACKETS) {
         // Send packets in the current window
         while (next_seq_num < base + WINDOW_SIZE && next_seq_num < MAX_PACKETS) {
@@ -47,13 +43,11 @@ int main() {
             printf("Sent Packet %d\n", next_seq_num);
             next_seq_num++;
         }
-
         // Set a timeout for receiving ACKs
         struct timeval timeout;
         timeout.tv_sec = 0;
         timeout.tv_usec = TIMEOUT_MS * 1000;
         setsockopt(clientSocket, SOL_SOCKET, SO_RCVTIMEO, (const char *)&timeout, sizeof(timeout));
-
         // Receive ACKs and update the window
         int ack;
         while (recvfrom(clientSocket, (char *)&ack, sizeof(int), 0, NULL, NULL) > 0) {
@@ -63,7 +57,6 @@ int main() {
             }
         }
     }
-
     closesocket(clientSocket);
     WSACleanup();
     return 0;
