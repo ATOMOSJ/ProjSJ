@@ -1,0 +1,11 @@
+Cost Adjacency Matrix of the Minimum Spanning Tree:
+1 2 3 4 3 6 7 3 
+2 4 
+3 0 8 
+4 0 0 7 
+5 0 0 0 9 
+6 0 0 4 14 10 
+7 0 0 0 0 0 2 
+8 8 11 0 0 0 0 1 
+9 0 0 2 0 0 0 6 7 
+Total Weight of the Spanning Tree: 93
